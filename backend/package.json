@@ -1,0 +1,22 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "express": "^4.16.4",
+    "hbs": "^4.0.1",
+    "mongodb": "^3.6.9",
+    "mongoose": "^5.3.16",
+    "request": "^2.88.2",
+    "validator": "^10.8.0",
+    "yargs": "^12.0.2"
+  }
+}
