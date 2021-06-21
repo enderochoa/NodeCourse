@@ -3,6 +3,7 @@
 const localFileSystem = require('fs')
 const { MongoClient , ObjectID } =require('mongodb')
 
+
 const add = (bin, paymentMethod, country) => {
 
     const bins = load();
