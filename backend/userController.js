@@ -1,11 +1,8 @@
 const binService = require('./userService.js')
-
 const express = require('express')
-const app = express()
+const router = new express.Router()
 
-app.use(express.json())
-
-app.post('/users', (req, res) => {
+router.post('/users', (req, res) => {
   try {
     const user = binService.add(req.body)
     console.log(user)
@@ -16,25 +13,26 @@ app.post('/users', (req, res) => {
   }
 })
 
-app.get('/users/:id', (req, res) => {
+router.get('/users/:id', async (req, res) => {
   const _id = req.params.id // Access the id provided
 
-  try {
-    const user = binService.findById(_id);
-    console.log("user")
-    console.log(user)
-    if(!user){
-      return res.status(404).send()
+    const a = async () =>{
+      const user =  await binService.findById(_id);
+      return user
     }
-    res.send(user)
-  } catch(e) {
-    console.log(e)
-    res.status(500).send()
-  }
 
+    a().then((user)=>{
+      console.log("user contro")
+      console.log(user)
+      if(!user){
+        return res.status(404).send()
+      }
+      res.send(user)
+
+    }).catch((e)=>{
+      console.log(e)
+      res.status(500).send()
+    })
 })
 
-
-app.listen(3001,()=>{
-  console.log('server is up')
-})
+module.exports = router

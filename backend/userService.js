@@ -4,23 +4,23 @@ const User = require('./model/UserShema')
 
 const add = (userJson) =>{
   const {name,age,email} = userJson;
-  
-  mongoose.connect('mongodb://127.0.0.1:27017/bines',
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true
-    }).catch(error=>{
-      console.log("cant connect")
-      throw new Error(error.toString())
 
-    })
+  mongoose.connect('mongodb://127.0.0.1:27017/bines',
+      {
+        useNewUrlParser: true,
+        useCreateIndex: true
+      }).catch(error=>{
+    console.log("cant connect")
+    throw new Error(error.toString())
+
+  })
 
   const user = new User({
     name: name,
     age: age,
     email:email
   })
- 
+
   user.save().then(() => {
     return user
   }).catch((error) => {
@@ -32,10 +32,10 @@ const add = (userJson) =>{
 
 const findById = id => {
   mongoose.connect('mongodb://127.0.0.1:27017/bines',
-      {
-        useNewUrlParser: true,
-        useCreateIndex: true
-      }).catch(error=>{
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true
+  }).catch(error=>{
     console.log("cant connect")
     throw new Error(error.toString())
   })
@@ -45,7 +45,10 @@ const findById = id => {
     if (!user) {
       return null;
     }
+
+    console.log("user service")
     console.log(user)
+
     return user
   }).catch((e) => {
     console.log(e.toString());
