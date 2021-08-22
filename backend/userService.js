@@ -3,7 +3,7 @@ const validator = require('validator')
 const User = require('./model/UserShema')
 
 const add = (userJson) =>{
-  const {name,age,email} = userJson;
+  const {name,age,email,password} = userJson;
 
   mongoose.connect('mongodb://127.0.0.1:27017/bines',
       {
@@ -18,13 +18,14 @@ const add = (userJson) =>{
   const user = new User({
     name: name,
     age: age,
-    email:email
+    email:email,
+    password:password
   })
 
   user.save().then(() => {
     return user
   }).catch((error) => {
-    console.log('Error!', error)
+    // console.log('Error!', error)
     throw new Error(error.toString());
 
   })
