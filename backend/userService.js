@@ -26,7 +26,7 @@ const add = (userJson) =>{
     return user
   }).catch((error) => {
     // console.log('Error!', error)
-    throw new Error(error.toString());
+    throw new Error();
 
   })
 }
