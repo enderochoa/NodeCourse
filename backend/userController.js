@@ -8,7 +8,7 @@ const auth = require('./middleware/auth')
 router.post('/users', async (req, res) => {
   try {
     const user = await binService.add(req.body)
-    res.send( user)
+    res.status(201).send( user)
   } catch(e){
     // console.log(e.toString())
     res.status(400).send(e)

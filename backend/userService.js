@@ -5,7 +5,9 @@ const User = require('./model/UserShema')
 const add = (userJson) =>{
   const {name,age,email,password} = userJson;
 
-  mongoose.connect('mongodb://127.0.0.1:27017/bines',
+  console.log(process.env.MONGO)
+
+  mongoose.connect(process.env.MONGO,
       {
         useNewUrlParser: true,
         useCreateIndex: true
@@ -32,7 +34,7 @@ const add = (userJson) =>{
 }
 
 const findById = id => {
-  mongoose.connect('mongodb://127.0.0.1:27017/bines',
+  mongoose.connect(process.env.MONGO,
   {
     useNewUrlParser: true,
     useCreateIndex: true

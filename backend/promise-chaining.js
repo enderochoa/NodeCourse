@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const User = require('./model/UserShema')
 
-mongoose.connect('mongodb://127.0.0.1:27017/bines',
+mongoose.connect(process.env.MONGO,
     {
         useNewUrlParser: true,
         useCreateIndex: true,
